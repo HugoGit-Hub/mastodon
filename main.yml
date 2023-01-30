@@ -1,0 +1,116 @@
+---
+
+- name: PLaybook mastodon installation
+  hosts: mastodon
+  tasks:
+
+    # - name: apt update
+    #   apt:
+    #     update_cache: yes
+    #     force_apt_get: yes
+    #     upgrade: yes
+
+    # - name: install dependencies
+    #   apt:
+    #     name: '{{ item }}'
+    #     state: latest
+    #   loop:
+    #     - sudo
+    #     - curl
+    #     - wget
+    #     - gnupg
+    #     - apt-transport-https
+    #     - lsb-release
+    #     - ca-certificates
+
+    # - name: referentials Node.js
+    #   shell: curl -sL https://deb.nodesource.com/setup_16.x | bash -
+
+    # - name: GPG key Yarn
+    #   shell: curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | sudo tee /usr/share/keyrings/yarnkey.gpg >/dev/null
+
+    # - name: referentials Yarn
+    #   shell: echo "deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+
+    # - name: referentials PostgrSQL wget
+    #   get_url:
+    #     url: https://www.postgresql.org/media/keys/ACCC4CF8.asc
+    #     dest: /usr/share/keyrings/postgresql.asc
+
+    # - name: referentials PostgrSQL echo
+    #   shell: echo "deb [signed-by=/usr/share/keyrings/postgresql.asc] http ://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" 
+
+    # - name: referentials PostgrSQL >
+    #   shell: "> /etc/apt/sources.list.d/postgresql.list"
+
+    # - name: apt update
+    #   apt:
+    #     update_cache: yes
+    #     force_apt_get: yes
+    #     upgrade: yes
+      
+    # - name: install dependencies
+    #   apt:
+    #     name: '{{ item }}'
+    #     state: latest
+    #   loop:
+    #     - imagemagick
+    #     - ffmpeg
+    #     - libpq-dev
+    #     - libxml2-dev
+    #     - libxslt1-dev
+    #     - file
+    #     - git-core
+    #     - g++
+    #     - libprotobuf-dev
+    #     - protobuf-compiler
+    #     - pkg-config
+    #     - nodejs
+    #     - gcc
+    #     - autoconf
+    #     - bison
+    #     - build-essential
+    #     - libssl-dev
+    #     - libyaml-dev
+    #     - libreadline6-dev
+    #     - zlib1g-dev
+    #     - libncurses5-dev
+    #     - libffi-dev
+    #     - libgdbm-dev
+    #     - nginx
+    #     - yarn
+    #     - redis-server
+    #     - redis-tools
+    #     - postgresql
+    #     - postgresql-contrib
+    #     - certbot
+    #     - python3-certbot-nginx
+    #     - libidn11-dev
+    #     - libicu-dev
+    #     - libjemalloc-dev
+
+    # - name: adduser mastodon
+    #   user:
+    #     name: mastodon
+
+    # - name: delete passwd mastodon user
+    #   lineinfile:
+    #     path: /etc/passwd
+    #     regexp: '^mastodon:x'
+    #     line: 'mastodon::1001:1001:,,,:/home/mastodon:/bin/bash'
+
+    # - name: git clone repo rbenv
+    #   git:
+    #     repo: https://github.com/rbenv/rbenv.git
+    #     dest: /home/mastodon/.rbenv
+
+    # - name: change owner /home/mastodon/.rbenv
+    #   file:
+    #     path: /home/mastodon/.rbenv
+    #     owner: mastodon
+    #     group: mastodon
+    #     recurse: yes
+
+    - name: complie rbenv
+      script:
+        cmd: /home/mastodon/.rbenv/src/configure make -C src 

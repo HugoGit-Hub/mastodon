@@ -1,0 +1,8 @@
+- ssh:
+    ssh-keygen
+    ssh-copy-id -i /home/user/.ssh/id_number.pub name@adress_ip
+
+- disbale password:
+    sudo touch /etc/sudoers.d/noPassword
+    sudo nano /etc/sudoers.d/noPassword
+        hugo ALL = (ALL) NOPASSWD: ALL
