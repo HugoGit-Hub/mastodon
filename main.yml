@@ -111,6 +111,34 @@
     #     group: mastodon
     #     recurse: yes
 
-    - name: complie rbenv
-      script:
-        cmd: /home/mastodon/.rbenv/src/configure make -C src 
+    # - name: configure rbenv
+    #   shell: ./configure
+    #   args:
+    #     chdir: "/home/mastodon/.rbenv/src"
+
+    # - name: complile rbenv
+    #   shell: make -C src
+    #   args:
+    #     chdir: "/home/mastodon/.rbenv/"
+
+    # - name: add rbenv directory to the PATH
+    #   shell: echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+
+    # - name: Autoload rbenv
+    #   shell: echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+
+    # - name: reboot vm mastodon
+    #   reboot:
+
+    # - name: clone git repo ruby-build
+    #   git:
+    #     repo: https://github.com/rbenv/ruby-build.git
+    #     dest: /home/mastodon/.rbenv/plugins/ruby-build
+
+    # - name: Install Ruby 3.0.4
+    #   shell: ./install.sh 3.0.4
+    #   args:
+    #     chdir: /home/mastodon/.rbenv/plugins/ruby-build
+
+    - name: Configure default version Ruby on 3.0.4
+      shell: rbenv global 3.0.4
